@@ -48,6 +48,12 @@ bool OnBitsTogether(string val)
 int nextNumber(string binaryNum)
 {
 	bool bitsMask =OnBitsTogether(binaryNum);
+	int trailingZeros=0;
+	for(int i=31;i>=rightBit;i--)
+		{
+			if(binaryNum[i]=='0')
+			trailingZeros++;
+		}
 	if(leftBit==rightBit)
 	{
 		binaryNum[leftBit-1]='1';
@@ -56,12 +62,7 @@ int nextNumber(string binaryNum)
 	}
 	if(bitsMask)
 	{
-		int trailingZeros=0, total1s=rightBit-leftBit;
-		for(int i=31;i>=rightBit;i--)
-		{
-			if(binaryNum[i]=='0')
-			trailingZeros++;
-		}
+		int total1s=rightBit-leftBit;
 		// cout<<"Trailing zeros"<<trailingZeros<<endl;
 		// cout<<"Total 1s "<<total1s<<endl;
 		binaryNum[31-trailingZeros-1-total1s]='1';
@@ -79,13 +80,33 @@ int nextNumber(string binaryNum)
 		return binaryToDecimal(binaryNum);
 	}
 	// On bits not together 1000100101
+	int index, zeros=0;
 	for(int i=31;i>=1;i--)
 	{
 		if(binaryNum[i]=='1'&&binaryNum[i-1]=='0')
 		{
 			binaryNum[i]='0';
 			binaryNum[i-1]='1';
+			index=i;
 			break;
+		}
+	}
+	if(trailingZeros!=0)
+	{
+		for(int i=index; i<32;i++)
+		{
+			if(binaryNum[i]=='0')
+			zeros++;
+		}
+		for(int i=index;i<32;i++)
+		{
+			if(zeros>0)
+			{
+				binaryNum[i]='0';
+				zeros--;
+			}
+			else
+			binaryNum[i]='1';
 		}
 	}
     return binaryToDecimal(binaryNum);
