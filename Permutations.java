@@ -6,6 +6,8 @@ track what items are  in the partial solution from the set of n the current
 partial solution collect all the valide solutions
 */
 
+import java.util.*;
+
 class Solution {
     public void backtrack(int n, ArrayList<Integer> nums, List<List<Integer>> output, int first) {
       if (first == n)
