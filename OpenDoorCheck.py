@@ -13,6 +13,15 @@ same char means door
 Output format :
 YES if people sneaked else NO
 """
+
+# For que where each char represents fan entering
+# from that door & not open or close we can just
+# maintain the last index of that door, marking it
+# in first iteration then we iterate again & check
+# how many doors are open at each specific door
+# and if open doors are more return "YES" else 
+# iterate till we reach the end & return "NO"
+
 inputVal = input()
 n, k = [int(x) for x in inputVal.split()]
 gates = {}
