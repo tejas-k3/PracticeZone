@@ -11,3 +11,26 @@ class Solution:
                     answer.append("(" + left_string + ")" + right_string)
         
         return answer
+
+"""
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        return generator("", n)
+
+def generator(stringVal, limit):
+    openCount = stringVal.count('(')
+    closeCount = stringVal.count(')')
+    results = []
+    if not limit:
+        if openCount == closeCount:
+            results.append(stringVal)
+            # return stringVal
+        elif openCount > closeCount:
+            results.extend(generator(stringVal + ')', limit))
+    if openCount == closeCount and limit:
+        results.extend(generator(stringVal + '(', limit-1))
+    elif openCount > closeCount and limit:
+        results.extend(generator(stringVal + '(', limit-1))
+        results.extend(generator(stringVal + ')', limit))
+    return results
+"""
