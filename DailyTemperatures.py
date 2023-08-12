@@ -16,5 +16,17 @@ class Solution:
                 # Use information from answer to search for the next warmer day
                 days += answer[curr_day + days]
             answer[curr_day] = days
-
         return answer
+"""
+Another approach is to itreate while making use of stack
+   def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        n = len(temperatures)
+        stack = []
+        answer = [0] * n
+        for i, temp in enumerate(temperatures):
+            while stack and temp > stack[-1][0]:
+                stackT, stackIndex = stack.pop()
+                answer[stackIndex] = (i-stackIndex)
+            stack.append([temp, i])
+        return answer
+"""
