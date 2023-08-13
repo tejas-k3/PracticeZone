@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/koko-eating-bananas/
-# Binary search 
+# Binary search, NOTE : THIS FAILS IN PY2 WORKS IN PY3
+# The reason is ceil function acting diff for both env.
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         l, r = 1, max(piles)
